@@ -9,6 +9,5 @@ public class JavaCollection1 {
         q[0] = 222;
 
 
-
     }
 }

@@ -1,0 +1,42 @@
+ArrayList<Integer> resultSequence = new ArrayList<>();
+        List<ArrayList<Integer>> result = new ArrayList<>();
+        for (int j = 0; j < list.size(); j++) {
+
+
+            for (int i = j; i < list.size(); i++) {
+                if ((i + 1 < list.size())) {
+                    if (list.get(i) > list.get(i + 1)) {
+                        resultSequence.add(list.get(i + 1));
+                        int start = list.get(i + 1);
+                        while (i + 2 < list.size()) {
+                            if (list.get(i + 2) > list.get(i + 1) && list.get(i + 2) > start
+                                    && list.get(i + 2) > resultSequence.get(resultSequence.size() - 1))
+                                resultSequence.add(list.get(i + 2));
+                            i++;
+                        }
+                    } else {
+                        resultSequence.add(list.get(i));
+                        resultSequence.add(list.get(i + 1));
+                        int start = list.get(i);
+                        while (i + 2 < list.size()) {
+                            int last = list.get(i + 1);
+                            if (list.get(i + 2) > list.get(i + 1) && list.get(i + 2) > start
+                                    && list.get(i + 2) > resultSequence.get(resultSequence.size() - 1))
+                                resultSequence.add(list.get(i + 2));
+                            i++;
+                        }
+                    }
+                }
+                result.add(resultSequence);
+                resultSequence = new ArrayList<>();
+                i = list.size();
+            }
+        }
+        HashSet<Integer> finalResult = new HashSet<>();
+        for (ArrayList<Integer> current:
+        result){
+            finalResult.addAll(current);
+        }
+        resultSequence.addAll(finalResult);
+        return resultSequence;
+    }
