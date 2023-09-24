@@ -45,8 +45,3 @@ Methods:
  !!!!СДЕЛАТЬ ОТДЕЛЬНЫЙ ПРОЕКТ В РЕПОЗИТОРИИ, НЕ ОТДЕЛЬНОЙ ПАПКОЙ, А ОТДЛЬНЫМ ПРОЕКТОМ.
  ПОТОМ БУДЕМ ДОПИСЫВАТЬ ФУНКЦИОНАЛ ТУДА ЖЕ.
 
-for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList.get(i).getDepartment().equals(bestDepartment)) {
-                employeeList.get(i).setBonusPCT(employeeList.get(i).getBonusPCT() + 0.05);
-            }
-        }
