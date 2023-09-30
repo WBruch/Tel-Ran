@@ -56,10 +56,10 @@ public class StoreManager {
 
     // Метод, который оформляет покупку продуктов из корзины клиента.
     public void purchaseCart(Customer customer) {
-        for (Entry current :
+        for (Entry<Product,Integer> current :
                 customer.getCustomerCart().entrySet()) {
-            for (int i = 0; i < (int) current.getValue(); i++) {
-                customer.getCustomerPurchases().add((Product) current.getKey());
+            for (int i = 0; i < current.getValue(); i++) {
+                customer.getCustomerPurchases().add(current.getKey());
             }
         }
     }

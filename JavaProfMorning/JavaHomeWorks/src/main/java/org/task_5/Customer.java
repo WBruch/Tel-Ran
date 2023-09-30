@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 @Data
 public class Customer {
-    private UUID customerId = new UUID(12,21);
+    private final UUID customerId = new UUID(12,21);
     private String customerName;
     private String customerEmail;
     private String customerPhone;
