@@ -10,7 +10,8 @@ public class Solution {
     public static void main(String[] args) {
 
         List<Integer> integers = Arrays.asList(12, 2, 33, 4, 55, 6, 71, 8, 19, 100);
-        List<String> strings = Arrays.asList("Arbitrary", "One", "Two", "Arrow", "One", "Two", "Arrow", "One", "Two", "Three", "Four");
+        List<String> strings = Arrays.asList("Arbitrary", "One", "Two", "Arrow", "One", "Two", "Arrow",
+                "One", "Two", "Three", "Four");
         List<User> users = new ArrayList<>();
         users.add(new User("John", 19));
         users.add(new User("Michael", 33));
