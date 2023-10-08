@@ -53,9 +53,6 @@ public class FuncInterHW {
         Function<String, String> getStr = s -> s + " degrees Celsius";
         Function<Integer, String> convertToCelsius = c -> getSign.compose(limitValues).andThen(getStr).apply(c);
 
-        //getSign.apply(el).concat(limitValues.apply(el)).concat(" degrees Celsius"); работает отлично, но не
-        // удовлетворяет условию задачи об использовании методов Function
-
         System.out.println(convertToCelsius.apply(150));
         System.out.println(convertToCelsius.apply(-3));
     }
