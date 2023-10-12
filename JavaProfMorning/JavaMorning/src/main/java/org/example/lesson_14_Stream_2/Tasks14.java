@@ -193,11 +193,9 @@ public class Tasks14 {
             return true;
         };
 
-        Predicate<Integer> isPalindrome = number -> {
-            String numberStr = String.valueOf(number);
-            String reverseStr = new StringBuilder(numberStr).reverse().toString();
-            return numberStr.equals(reverseStr);
-        };
+        Predicate<Integer> isPalindrome = number -> String.valueOf(number)
+                .equals(new StringBuilder(number).reverse().toString());
+
 
         int sum = IntStream.rangeClosed(start, end)
                 .filter(isPrime::test)
