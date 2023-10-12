@@ -15,6 +15,13 @@ public class Person implements Comparable<Person> {
     private String location;
     private boolean isMarried;
 
+    public Person(String name, int age) {
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public int compareTo(Person o) {
         return this.getAge() - o.getAge();
