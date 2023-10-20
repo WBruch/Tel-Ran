@@ -12,5 +12,14 @@ public class Monkey{
     private boolean isHungry;
     private double weight;
 
-
+    @Override
+    public String toString() {
+        return "Monkey{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", colour='" + colour + '\'' +
+                ", isHungry=" + isHungry +
+                ", weight=" + weight +
+                '}';
+    }
 }

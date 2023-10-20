@@ -1,49 +1,89 @@
 package summaryFriday.sumTasks.task3;
 
-/**
- *  Оценить эффективность алгоритма решения задачи Ханойской башни, предложенного на занятии (см. HanoiTower.java в репозитории)
- *
- *  Поскольку в решении рекурсивная функция вызывается два раза, а количество вызовов зависит от n, то сложность
- *  такого алгоритма составляет 2^n.
- *
- *
- * Написать функцию sum(n, m), вычисляющую сумму тех чисел в диапазоне от 1 до n, которые делятся на m.
- * Например:
- * sum(7, 2) = 2 + 4 + 6 = 12
- * sum(12, 3) = 3 + 6 + 9 + 12 = 30
- * Решить задачу:
- * а) через цикл
- * б) через рекурсию
- */
+import summaryFriday.sum_08_09.Cat;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.partitioningBy;
+
 public class Task3 {
+
     public static void main(String[] args) {
 
-        System.out.println(sum(7, 2));
-        System.out.println(sum(12, 3));
-        System.out.println("*******************");
-        System.out.println(sum1(7, 2));
-        System.out.println(sum1(12, 3));
-
     }
 
-    public static int sum(int a, int b) {
-        int c = a / b;
-        int sum = 0;
-        while (c > 0) {
-            sum += c * b;
-            c--;
-        }
-        return sum;
+    /**
+     * Переписать фрагменты кода с применением стримов:
+     */
+    // 1.
+    // public static void feed(List catList) {
+    //        for (int i = 0; i < catList.size(); i++) {
+    //            if (catList.get(i).isHungry()) {
+    //                catList.get(i).setHungry(false);
+    public static void feed(List<Cat> catList) {
+        catList.stream()
+                .filter(Cat::isHungry)
+                .forEach(cat -> cat.setHungry(false));
+    }
+    // метод не изменит значение в исходном листе,т.к. стримы не изменяют исходный список напрямую,
+    // нужно изменить тип возращаемого параметра на List<Cat> , а сам стрим завершить оператором toList
+
+
+    //2)
+//    public static int getSum(List integers) {
+//        int oddSum = 0;
+//        for(Integer i: integers) {
+//            if(i % 2 != 0) {
+//                oddSum += i;
+//            }
+//        }
+//        return oddSum;
+//    }
+
+    public static int getSum(List<Integer> integers) {
+        return integers.stream()
+                .filter(el -> el % 2 != 0)
+                .reduce(Integer::sum)
+                .get();
     }
 
-    public static int sum1(int a, int b){
-        int c = a / b;
-        int d = c * b;
-        return recursiveSum(d, b);
+// 3)
+//
+//    public static Map> getMap() {
+//        Map> map = new TreeMap<>();
+//        for (int i = 0; i < 100; i++) {
+//            if (i % 3 == 0) {
+//                if (map.containsKey(true)) {
+//                    map.get(true).add(i);
+//                } else {
+//                    map.put(true, new ArrayList<>());
+//                    map.get(true).add(i);
+//                }
+//            } else {
+//                if (map.containsKey(false)) {
+//                    map.get(false).add(i);
+//                } else {
+//                    map.put(false, new ArrayList<>());
+//                    map.get(false).add(i);
+//                }
+//            }
+//        }
+//        return map;
+
+    public static Map<Boolean, List<Integer>> getMap() {
+        return IntStream.range(0, 100)
+                .boxed()
+                .collect(Collectors.partitioningBy(el -> el % 3 == 0));
     }
 
-    private static int recursiveSum(int d, int b) {
-        if (d <= 0) return 0;
-        return d + recursiveSum(d - b, b);
+// 4) Код в классе de.telran.lesson20230929.Dictionary (см. репозиторий)
+    public static Map<String, Long> dictionary(String text) {
+        return Stream.of(text.split(""))
+                .collect(Collectors.groupingBy(Object::toString, Collectors.counting()));
     }
+
 }

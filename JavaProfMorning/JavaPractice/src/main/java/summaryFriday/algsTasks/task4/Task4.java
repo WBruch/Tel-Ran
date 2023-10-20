@@ -1,4 +1,4 @@
-package summaryFriday.sumTasks.task4;
+package summaryFriday.algsTasks.task4;
 
 import java.util.Arrays;
 
