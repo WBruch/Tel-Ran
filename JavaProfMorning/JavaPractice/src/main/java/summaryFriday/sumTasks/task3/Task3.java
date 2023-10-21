@@ -1,7 +1,11 @@
 package summaryFriday.sumTasks.task3;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import summaryFriday.sum_08_09.Cat;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -29,9 +33,6 @@ public class Task3 {
                 .filter(Cat::isHungry)
                 .forEach(cat -> cat.setHungry(false));
     }
-    // метод не изменит значение в исходном листе,т.к. стримы не изменяют исходный список напрямую,
-    // нужно изменить тип возращаемого параметра на List<Cat> , а сам стрим завершить оператором toList
-
 
     //2)
 //    public static int getSum(List integers) {
@@ -80,7 +81,7 @@ public class Task3 {
                 .collect(Collectors.partitioningBy(el -> el % 3 == 0));
     }
 
-// 4) Код в классе de.telran.lesson20230929.Dictionary (см. репозиторий)
+    // 4) Код в классе de.telran.lesson20230929.Dictionary (см. репозиторий)
     public static Map<String, Long> dictionary(String text) {
         return Stream.of(text.split(""))
                 .collect(Collectors.groupingBy(Object::toString, Collectors.counting()));
