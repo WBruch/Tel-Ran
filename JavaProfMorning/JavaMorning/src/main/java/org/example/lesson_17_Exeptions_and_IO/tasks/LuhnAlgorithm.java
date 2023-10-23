@@ -68,7 +68,9 @@ public class LuhnAlgorithm {
                 .map(el -> el + "")
                 .reduce(String::concat)
                 .get();
+
         StringBuilder stringBuilder = new StringBuilder();
+
         for (int i = 0; i < stringNumber.length(); i += 4) {
             stringBuilder.append(stringNumber, i, i + 4).append(" ");
         }
